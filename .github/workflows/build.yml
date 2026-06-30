@@ -341,7 +341,7 @@ jobs:
         if: contains(inputs.platform, 'windows') && !inputs.sign-binaries
         shell: bash
         run: |
-          jq 'del(.bundle.windows.signCommand)' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
+          jq '.bundle.createUpdaterArtifacts = false | del(.bundle.windows.signCommand)' src-tauri/tauri.conf.json > tmp.json && mv tmp.json src-tauri/tauri.conf.json
 
       - name: Build with Tauri
         uses: tauri-apps/tauri-action@v0

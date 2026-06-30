@@ -13,15 +13,20 @@ export const PushToTalk: React.FC<PushToTalkProps> = React.memo(
     const { t } = useTranslation();
     const { getSetting, updateSetting, isUpdating } = useSettings();
 
-    const pttEnabled = getSetting("push_to_talk") || false;
+    const pushToTalkEnabled = getSetting("push_to_talk") ?? true;
+    const toggleModeEnabled = !pushToTalkEnabled;
 
     return (
       <ToggleSwitch
-        checked={pttEnabled}
-        onChange={(enabled) => updateSetting("push_to_talk", enabled)}
+        checked={toggleModeEnabled}
+        onChange={(enabled) => updateSetting("push_to_talk", !enabled)}
         isUpdating={isUpdating("push_to_talk")}
-        label={t("settings.general.pushToTalk.label")}
-        description={t("settings.general.pushToTalk.description")}
+        label={t("settings.general.toggleMode.label")}
+        description={t(
+          toggleModeEnabled
+            ? "settings.general.toggleMode.enabledDescription"
+            : "settings.general.toggleMode.disabledDescription",
+        )}
         descriptionMode={descriptionMode}
         grouped={grouped}
       />

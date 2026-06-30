@@ -195,6 +195,11 @@
       "pushToTalk": {
         "label": "Push To Talk",
         "description": "Hold to record, release to stop"
+      },
+      "toggleMode": {
+        "label": "Toggle Recording",
+        "enabledDescription": "Press once to start recording, then press again to stop.",
+        "disabledDescription": "Turn this on to use toggle recording instead of holding the shortcut down."
       }
     },
     "models": {
